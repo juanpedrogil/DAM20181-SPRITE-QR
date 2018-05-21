@@ -16,10 +16,10 @@ import { Stripe } from "@ionic-native/stripe";
 export class StripePage {
   public token:String='';
   public data:any={
-    numero:'4242424242424242',
-    mes: 10,
-    year:2019,
-    cvc:'234'
+    number: '4242424242424242',
+    expMonth: 12,
+    expYear: 2020,
+    cvc: '220'
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public stripe:Stripe) {
@@ -30,9 +30,12 @@ export class StripePage {
   }
 
   public pagar():void{
-    this.stripe.setPublishableKey('pk_test');
-    this.stripe.createBankAccountToken(this.data).then((token)=>{
-      this.token=token;
+    this.stripe.setPublishableKey('pk_test_qi7eMFqnQoa6yV6bzumSVNNw');
+    this.stripe.createCardToken(this.data).then((token)=>{
+      this.token=token.id;
+      alert("El token es "+token.id);
+    }).catch((error)=>{
+      alert(error);
     });
   }
 
