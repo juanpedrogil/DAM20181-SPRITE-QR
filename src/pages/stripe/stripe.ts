@@ -33,7 +33,7 @@ export class StripePage {
     this.stripe.setPublishableKey('pk_test_qi7eMFqnQoa6yV6bzumSVNNw');
     this.stripe.createCardToken(this.data).then((token)=>{
       this.token=token.id;
-      alert("El token es "+token.id);
+      //alert("El token es "+token.id);
     }).catch((error)=>{
       alert(error);
     });
